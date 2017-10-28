@@ -20,6 +20,9 @@
             <clever_adwords>
                 <class>Clever_Adwords_Model</class>
             </clever_adwords>
+            <clever_adwords_service>
+                <class>Clever_Adwords_Service</class>
+            </clever_adwords_service>
         </models>
         <resources>
             <clever_adwords_setup>

@@ -8,32 +8,38 @@
  */
 class Clever_Adwords_Service_Api_Acl_Rule
 {
+    protected $_rule;
+
+    public function __construct()
+    {
+        $this->_rule = Mage::getModel('api2/acl_global_rule');
+    }
+
     /**
      * @return Mage_Api2_Model_Acl_Global_Rule
      */
     public function getRule()
     {
-        return Mage::getModel('api2/acl_global_rule');
+        return $this->_rule;
     }
 
     /**
      * @param $role
+     * @param $resources
      */
-    public function assignResources($role)
+    public function assignResources($role, $resources)
     {
         $_id = $role->getId();
-        $_resources = Clever_Adwords_Service_Settings::getResources();
-        $_rule = $this->getRule();
-        foreach ($_resources as $resourceId => $privileges) {
+        foreach ($resources as $resourceId => $privileges) {
             foreach ($privileges as $privilege => $allow) {
                 if (!$allow) {
                     continue;
                 }
 
-                $_rule->setId(null)
+                $this->_rule->setId(null)
                     ->isObjectNew(true);
 
-                $_rule->setRoleId($_id)
+                $this->_rule->setRoleId($_id)
                     ->setResourceId($resourceId)
                     ->setPrivilege($privilege)
                     ->save();

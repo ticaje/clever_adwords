@@ -45,13 +45,22 @@
     </frontend>
     <admin>
         <routers>
-            <discounts>
+            <adwords>
                 <use>admin</use>
                 <args>
                     <module>Clever_Adwords</module>
                     <frontName>adwords</frontName>
                 </args>
-            </discounts>
+            </adwords>
         </routers>
     </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <adwords>
+                    <file>clever_adwords/admin.xml</file>
+                </adwords>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

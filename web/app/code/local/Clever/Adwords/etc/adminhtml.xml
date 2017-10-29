@@ -1,0 +1,29 @@
+<adminhtml>
+    <menu>
+        <adwords module="clever_adwords">
+            <title>Clever Adwords</title>
+            <sort_order>90</sort_order>
+            <children>
+                <items module="clever_adwords">
+                    <title>Settings</title>
+                    <action>adwords/adminhtml_settings</action>
+                </items>
+            </children>
+        </adwords>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <clever_adwords>
+                        <title>News Module</title>
+                        <sort_order>10</sort_order>
+                    </clever_adwords>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</adminhtml>

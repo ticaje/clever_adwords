@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Abstract Service Class
+ * REST API Service Class
  * @category    Clever
  * @package     Clever_Adwords
  * @author      Hector Luis Barrientos <ticaje@filetea.me>

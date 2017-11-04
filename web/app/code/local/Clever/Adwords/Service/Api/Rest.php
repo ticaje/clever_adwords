@@ -10,14 +10,17 @@ class Clever_Adwords_Service_Api_Rest extends Clever_Adwords_Service_Api_Abstrac
 {
 
     protected $_acl_global_rule;
+    protected $_api_role;
+    protected $_consumer_key;
+    protected $_consumer_secret;
+    protected $_consumer_name;
+    protected $_role_name;
 
-    /**
-     * Clever_Adwords_Service_Api_Rest constructor.
-     * @param Clever_Adwords_Service_Api_Acl_Rule $rule
-     */
-    public function __construct(Clever_Adwords_Service_Api_Acl_Rule $rule)
+    public function __construct()
     {
-        $this->_acl_global_rule = $rule;
+        $this->_consumer_name = 'Clever Consumer'; //To load from config
+        $this->_role_name = 'Clever Role'; //To load from config
+        $this->generateConsumerCredentials();
     }
 
     /**
@@ -36,6 +39,14 @@ class Clever_Adwords_Service_Api_Rest extends Clever_Adwords_Service_Api_Abstrac
             $_result = true;
         }
         return $_result;
+    }
+
+    protected function generateConsumerCredentials()
+    {
+        // Generate consumer credentials
+        $_helper = Mage::helper('oauth');
+        $this->_consumer_key = $_helper->generateConsumerKey();
+        $this->_consumer_secret = $_helper->generateConsumerSecret();
     }
 
     /**

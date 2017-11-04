@@ -17,7 +17,7 @@ class Clever_Adwords_Block_Adminhtml_Settings_Edit_Form extends Mage_Adminhtml_B
     public function _construct()
     {
         parent::_construct();
-        $this->_url_to_save = '*/*/savesettings';
+        $this->_url_to_save = '*/*/install';
     }
 
     /**

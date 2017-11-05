@@ -10,6 +10,9 @@
                     <action>adwords/adminhtml_settings</action>
                 </items>
             </children>
+            <depends>
+                <config>adwords/general/active</config>
+            </depends>
         </adwords>
     </menu>
 </config>

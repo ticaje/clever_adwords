@@ -20,4 +20,14 @@ class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
         }
         return $_result;
     }
+
+    public function isInstalled()
+    {
+        return Mage::getStoreConfig('adwords/general/installed');
+    }
+
+    public function setInstalled()
+    {
+        Mage::getConfig()->saveConfig('adwords/general/installed', 1);
+    }
 }

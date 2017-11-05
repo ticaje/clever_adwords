@@ -18,6 +18,10 @@ class Clever_Adwords_Block_Adminhtml_Settings_Edit extends Mage_Adminhtml_Block_
         $this->_blockGroup = 'clever_adwords';
         $this->_controller = 'adminhtml_settings';
         $this->_removeButton('reset');
+        if (Mage::helper('clever_adwords')->isInstalled()){
+            $this->_removeButton('back');
+            $this->_removeButton('save');
+        }
     }
 
     /**
@@ -25,6 +29,8 @@ class Clever_Adwords_Block_Adminhtml_Settings_Edit extends Mage_Adminhtml_Block_
      */
     public function getHeaderText()
     {
-        return Mage::helper('clever_adwords')->__('Install the Clever Adwords Application');
+        $_installed = Mage::helper('clever_adwords')->isInstalled();
+        $_header = !$_installed ? 'Install the Clever Adwords Application' : 'Clever Adwords Application Management';
+        return Mage::helper('clever_adwords')->__($_header);
     }
 }

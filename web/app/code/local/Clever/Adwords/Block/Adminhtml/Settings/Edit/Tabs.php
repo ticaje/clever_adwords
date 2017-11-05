@@ -8,7 +8,7 @@
  */
 class Clever_Adwords_Block_Adminhtml_Settings_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
 {
-    protected $_title = "Adwords APP Installation";
+    protected $_title = "Clever Adwords APP";
     protected $_entity = "settings";
     protected $_helper;
 
@@ -24,11 +24,13 @@ class Clever_Adwords_Block_Adminhtml_Settings_Edit_Tabs extends Mage_Adminhtml_B
     protected function _beforeToHtml()
     {
 
-        $this->addTab('form_section_install', array(
-            'label' => $this->_helper->__('Installation'),
-            'title' => $this->_helper->__('Installtion'),
-            'content' => $this->getLayout()->createBlock('clever_adwords/adminhtml_settings_edit_tab_install')->toHtml(),
-        ));
+        if (!$this->_helper->isInstalled()){
+            $this->addTab('form_section_install', array(
+                'label' => $this->_helper->__('Installation'),
+                'title' => $this->_helper->__('Installtion'),
+                'content' => $this->getLayout()->createBlock('clever_adwords/adminhtml_settings_edit_tab_install')->toHtml(),
+            ));
+        }
 
         $this->addTab('form_section_dashboard', array(
             'label' => $this->_helper->__('Dashboard'),

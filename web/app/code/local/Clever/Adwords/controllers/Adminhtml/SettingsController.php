@@ -17,9 +17,8 @@ class Clever_Adwords_Adminhtml_SettingsController extends Mage_Adminhtml_Control
 
     public function indexAction()
     {
-        $this->loadLayout();
-        $this->_addContent($this->getLayout()->createBlock('clever_adwords/adminhtml_settings_edit'))
-            ->_addLeft($this->getLayout()->createBlock('clever_adwords/adminhtml_settings_edit_tabs'));
+        $this->loadLayout()->_setActiveMenu('adwords');
+        $this->_addContent($this->getLayout()->createBlock('clever_adwords/adminhtml_settings_edit'));
         $this->renderLayout();
     }
 

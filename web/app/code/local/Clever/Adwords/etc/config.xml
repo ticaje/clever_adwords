@@ -85,4 +85,11 @@
             </resources>
         </acl>
     </adminhtml>
+    <default>
+        <adwords>
+            <general>
+                <iframe_url>https://cleverppc.com/</iframe_url>
+            </general>
+        </adwords>
+    </default>
 </config>

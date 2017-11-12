@@ -14,9 +14,6 @@
                     <action>adminhtml/system_config/edit/section/adwords</action>
                 </config>
             </children>
-            <depends>
-                <config>adwords/general/active</config>
-            </depends>
         </adwords>
     </menu>
 </config>

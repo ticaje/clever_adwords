@@ -8,6 +8,8 @@
  */
 class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    const CACHE_CONFIG_TYPE = 'config';
+
     public function getWebsitesList()
     {
         $_result = ['-1' => Mage::helper('clever_adwords')->__('Please Select')];
@@ -29,5 +31,7 @@ class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
     public function setInstalled()
     {
         Mage::getConfig()->saveConfig('adwords/general/installed', 1);
+        Mage::app()->getCacheInstance()->cleanType(self::CACHE_CONFIG_TYPE);
+        Mage::dispatchEvent('adminhtml_cache_refresh_type', array('type' => self::CACHE_CONFIG_TYPE));
     }
 }

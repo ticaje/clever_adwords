@@ -5,14 +5,15 @@
             <title>Clever Adwords</title>
             <sort_order>90</sort_order>
             <children>
-                <items module="clever_adwords">
-                    <title>Settings</title>
+                <settings module="clever_adwords">
+                    <title>Manage</title>
                     <action>adwords/adminhtml_settings</action>
-                </items>
+                </settings>
+                <config module="clever_adwords">
+                    <title>Configurations</title>
+                    <action>adminhtml/system_config/edit/section/adwords</action>
+                </config>
             </children>
-            <depends>
-                <config>adwords/general/active</config>
-            </depends>
         </adwords>
     </menu>
 </config>

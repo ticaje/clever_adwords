@@ -34,4 +34,15 @@ class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
         Mage::app()->getCacheInstance()->cleanType(self::CACHE_CONFIG_TYPE);
         Mage::dispatchEvent('adminhtml_cache_refresh_type', array('type' => self::CACHE_CONFIG_TYPE));
     }
+
+    public function setStoreUniqueId($hash)
+    {
+        Mage::getConfig()->saveConfig('adwords/store/store_hash', $hash);
+    }
+
+    public function setStoreHmac($hmac)
+    {
+        Mage::getConfig()->saveConfig('adwords/store/hmac', $hmac);
+    }
+
 }

@@ -9,6 +9,7 @@
 class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
 {
     const CACHE_CONFIG_TYPE = 'config';
+    const AUTOLOADER_CLEVER_FOLDER = 'Clever';
 
     public function getWebsitesList()
     {
@@ -45,4 +46,11 @@ class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
         Mage::getConfig()->saveConfig('adwords/store/hmac', $hmac);
     }
 
+    /**
+     * @return string
+     */
+    public function getExternalLibDirPath()
+    {
+        return Mage::getBaseDir('lib') . DS . self::AUTOLOADER_CLEVER_FOLDER;
+    }
 }

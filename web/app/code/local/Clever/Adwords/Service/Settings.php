@@ -8,6 +8,8 @@
  */
 class Clever_Adwords_Service_Settings
 {
+    const SHA_256 = 'sha256';
+
     /**
      * @return array
      * I will define the resources to expose in the API, later on we will make this configurable
@@ -41,4 +43,15 @@ class Clever_Adwords_Service_Settings
         };
         return $_result;
     }
+
+    static public function getHashMacAlgorithm()
+    {
+        return self::SHA_256;
+    }
+
+    static public function getHashSecret()
+    {
+        return '4n7fdidvdrzvwe5hb0i4blohf4d8crc'; // Will be stored later on
+    }
+
 }

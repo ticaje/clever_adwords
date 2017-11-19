@@ -6,7 +6,7 @@
  * @package     Clever_Adwords
  * @author      Hector Luis Barrientos <ticaje@filetea.me>
  */
-class Clever_Adwords_Service_Install_Store extends Clever_Adwords_Service_Abstract
+class Clever_Adwords_Service_Install_Store
 {
     protected $_instance;
     protected $_platform;

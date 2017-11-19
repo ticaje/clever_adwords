@@ -9,6 +9,7 @@
 class Clever_Adwords_Adminhtml_SettingsController extends Mage_Adminhtml_Controller_Action
 {
     protected $_helper;
+
     public function __construct(Zend_Controller_Request_Abstract $request, Zend_Controller_Response_Abstract $response, array $invokeArgs = array())
     {
         $this->_helper = Mage::helper('clever_adwords');
@@ -25,13 +26,30 @@ class Clever_Adwords_Adminhtml_SettingsController extends Mage_Adminhtml_Control
     public function installAction()
     {
         $_data = $this->getRequest()->getPost();
-        $_installer = new Clever_Adwords_Service_Install_Installer($_data['store']);
-        $_api_credentials = (new Clever_Adwords_Service_Api_Rest())->generateCredentials();
-        if ($_api_credentials['result']){
-            //Send data to CleverPPC API ... still undone
-            $this->_helper->setInstalled();
+        $_messenger = Mage::getSingleton('adminhtml/session');
+        try {
+            $_installer = new Clever_Adwords_Service_Install_Installer($_data);
+            $_installed = $_installer->openAPI();
+            if ($_installed['result']) {
+                //Send data to CleverPPC API ... still undone
+                $_connector = new Clever_Adwords_Service_Connector_Clever();
+                $_registered = $_connector->register($_installer->buildRegister());
+                if ($_registered['result']){
+                    $this->_helper->setInstalled();
+                }else{
+                    throw new Clever_Adwords_Service_Exception_Clever($_registered['message']);
+                }
+            }else{
+                throw new Clever_Adwords_Service_Exception_Api($_installed['message']);
+            }
+            $_messenger->addSuccess($this->_helper->__('The Clever Adwords application has been installed successfully'));
+        } catch (Clever_Adwords_Service_Exception_Clever $e) {
+            $_messenger->addError($this->_helper->__($e->getMessage()));
+        } catch (Clever_Adwords_Service_Exception_Api $e) {
+            $_messenger->addError($this->_helper->__($e->getMessage()));
+        } catch (Exception $e) {
+            $_messenger->addError($this->_helper->__($e->getMessage()));
         }
-        Mage::getSingleton('adminhtml/session')->addSuccess($this->_helper->__('The Clever Adwords application has been installed successfully'));
         $this->_redirect('*/*/');
         return;
     }

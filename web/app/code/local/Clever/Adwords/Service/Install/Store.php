@@ -10,18 +10,17 @@ class Clever_Adwords_Service_Install_Store
 {
     protected $_instance;
     protected $_platform;
-
-    protected function _construct()
-    {
-        parent::_init('clever_adwords_service/install_store');
-    }
+    protected $_store_hash;
+    protected $_website;
 
     /**
      * Clever_Adwords_Service_Install_Store constructor.
-     * @param $storeId
+     * @param $websiteId
      */
-    public function __construct($storeId)
+    public function __construct($websiteId)
     {
+        $this->_website = $websiteId;
+        $storeId = current(Mage::getModel('core/website')->load($websiteId)->getStoreIds());
         $this->_instance = Mage::getModel('core/store')->load($storeId);
         $this->_platform = 'community'; // to be parametrised
     }

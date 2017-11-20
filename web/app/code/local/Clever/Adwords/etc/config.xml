@@ -31,6 +31,17 @@
                 </setup>
             </clever_adwords_setup>
         </resources>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <clever_adwords_lib_load>
+                        <type>singleton</type>
+                        <class>clever_adwords/observer</class>
+                        <method>controllerFrontInitBefore</method>
+                    </clever_adwords_lib_load>
+                </observers>
+            </controller_front_init_before>
+        </events>
     </global>
     <frontend>
         <routers>
@@ -90,6 +101,12 @@
             <general>
                 <iframe_url>https://cleverppc.com/</iframe_url>
             </general>
+            <api>
+                <api_url>https://magento.cleverecommerce.com/api/magento/</api_url>
+                <email>bigcommerce@cleverppc.com</email>
+                <password>cleverppc</password>
+                <register_endpoint>create_shop</register_endpoint>
+            </api>
         </adwords>
     </default>
 </config>

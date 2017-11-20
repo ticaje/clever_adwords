@@ -80,9 +80,10 @@ class Clever_Adwords_Service_Api_Soap extends Clever_Adwords_Service_Api_Abstrac
         }
     }
 
-    protected function getConsumerCredentials()
+    protected function getCredentials()
     {
-        return $this->getUserData();
+        $_result = ['access_token' => $this->_consumer_name, 'secret' => $this->_api_key];
+        return $_result;
     }
 
     public function generateCredentials()
@@ -91,7 +92,7 @@ class Clever_Adwords_Service_Api_Soap extends Clever_Adwords_Service_Api_Abstrac
             $this->createUser();
             $this->createRole(['name' => $this->_role_name]);
             $this->assignRoleToUser($this->_role);
-            $_result = ['result' => true, 'message' => 'Credentials created successfully', 'credentials' => $this->getConsumerCredentials()];
+            $_result = ['result' => true, 'message' => 'Credentials created successfully', 'credentials' => $this->getCredentials()];
         } catch (Exception $exception) {
             $_result = ['result' => false, 'message' => $exception->getMessage()];
         }

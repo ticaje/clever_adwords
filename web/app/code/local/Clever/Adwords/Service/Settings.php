@@ -30,6 +30,16 @@ class Clever_Adwords_Service_Settings
         return $_result;
     }
 
+    static public function getSoapResources()
+    {
+        return [
+            'catalog','catalog/product','catalog/product/info','catalog/product/attribute','catalog/product/attribute/read',
+            'catalog','catalog/category','catalog/category/tree','catalog/category/info',
+            'cataloginventory','cataloginventory/info',
+            'sales','sales/order','sales/order/info','sales/order/invoice','sales/order/invoice/info'
+        ];
+    }
+
     /**
      * @param $entities
      * @param $type

@@ -51,7 +51,7 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
 
     public function openAPI()
     {
-        $_api_register = (new Clever_Adwords_Service_Api_Rest())->generateCredentials();
+        $_api_register = (new Clever_Adwords_Service_Api_Soap($this->_email))->generateCredentials();
         if ($_api_register['result']){
             $this->_credentials = $_api_register['credentials'];
         }

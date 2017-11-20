@@ -26,7 +26,5 @@ abstract class Clever_Adwords_Service_Api_Abstract
 
     abstract protected function assignRoleToUser($data);
 
-    abstract protected function getConsumerCredentials();
-
     abstract public function generateCredentials();
 }

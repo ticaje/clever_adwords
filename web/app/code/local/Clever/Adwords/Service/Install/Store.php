@@ -87,12 +87,12 @@ class Clever_Adwords_Service_Install_Store
 
     private function getCountries()
     {
-        return [Mage::getStoreConfig(Mage_Core_Helper_Data::XML_PATH_MERCHANT_COUNTRY_CODE, $this->_instance)];
+        return Mage::getStoreConfig(Mage_Core_Helper_Data::XML_PATH_MERCHANT_COUNTRY_CODE, $this->_instance);
     }
 
     private function getLanguages()
     {
-        return [Mage::getStoreConfig('general/locale/code', $this->_instance->getId())];
+        return substr(Mage::getStoreConfig(Mage_Core_Model_Locale::XML_PATH_DEFAULT_LOCALE, $this->_instance->getId()), 0, 2);
     }
 
     private function getLogoUrl()

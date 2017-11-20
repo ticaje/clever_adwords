@@ -80,7 +80,7 @@ class Clever_Adwords_Service_Connector_Clever extends Clever_Adwords_Service_Abs
             $_result = ['result' => $this->_auth_token, 'code' => $_response->getStatusCode()];
         } catch (RequestException $e) {
             // Call to Roll-bar, later on
-            $_result = ['result' => error, 'code' => $e->getCode(), 'message' => $e->getMessage()];
+            $_result = ['result' => false, 'code' => $e->getCode(), 'message' => $e->getMessage()];
         }
         return $_result;
     }

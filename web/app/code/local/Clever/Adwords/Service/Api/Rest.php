@@ -94,7 +94,7 @@ class Clever_Adwords_Service_Api_Rest extends Clever_Adwords_Service_Api_Abstrac
      */
     protected function getCredentials()
     {
-        return ['client_id' => $this->_consumer_key, 'secret' => $this->_consumer_secret];
+        return ['access_token' => $this->_consumer_key, 'secret' => $this->_consumer_secret];
     }
 
     /**

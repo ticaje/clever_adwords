@@ -31,6 +31,7 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
         $this->generatePayload();
         // Generate the hmac for communications with clever API
         $this->generateHmac();
+        $this->_credentials = [];
     }
     /**
      * @return string
@@ -75,7 +76,7 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
     public function buildRegister()
     {
         $_store_info = $this->fetchStoreInfo();
-        $_extra_data = ['hmac' => $this->_hmac, 'store_hash' => $this->_store->getStoreUniqueId()];
+        $_extra_data = ['email' => $this->_email, 'client_id' => $this->_store->getStoreUniqueId()];
         $_data = array_merge($_store_info, $this->_credentials, $_extra_data);
         return $_data;
         /*

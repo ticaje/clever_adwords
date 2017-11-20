@@ -103,7 +103,7 @@
             </general>
             <api>
                 <api_url>https://magento.cleverecommerce.com/api/magento/</api_url>
-                <email>bigcommerce@cleverppc.com</email>
+                <email>magento@cleverppc.com</email>
                 <password>cleverppc</password>
                 <register_endpoint>create_shop</register_endpoint>
             </api>

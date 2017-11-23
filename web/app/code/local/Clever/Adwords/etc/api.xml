@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <api>
+        <resources>
+            <clever_adwords translate="title" module="clever_adwords">
+                <model>clever_adwords/api</model>
+                <title>Demo API</title>
+                <acl>clever/adwords</acl>
+                <methods>
+                    <alive translate="title" module="clever_adwords">
+                        <title>Send response back</title>
+                        <acl>clever/adwords/alive</acl>
+                        <method>alive</method>
+                    </alive>
+                </methods>
+            </clever_adwords>
+        </resources>
+        <resources_alias>
+            <alive_test>clever_adwords</alive_test>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <clever_adwords>cleverAdwords</clever_adwords>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <clever translate="title" module="clever_adwords">
+                    <title>Test of live</title>
+                    <sort_order>5</sort_order>
+                    <adwords translate="title" module="clever_adwords">
+                        <title>Alive Test ACL</title>
+                        <alive translate="title" module="clever_adwords">
+                            <title>Alive Test ACL</title>
+                        </alive>
+                    </adwords>
+                </clever>
+            </resources>
+        </acl>
+    </api>
+</config>

@@ -19,8 +19,7 @@ class Clever_Adwords_Service_Api_Soap extends Clever_Adwords_Service_Api_Abstrac
     {
         parent::__construct();
         $this->_email = $email;
-        $this->_username = 'clever_consumer';
-        $this->generateConsumerCredentials();
+        $this->_username = Clever_Adwords_Service_Settings::CLEVER_CONSUMER_USERNAME;
     }
 
     protected function generateConsumerCredentials()

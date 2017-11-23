@@ -49,9 +49,14 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
         $this->_payload = ['store_hash' => $this->_store->getStoreUniqueId(), 'timestamp' => time(), 'email' => $this->_email];
     }
 
-    public function openAPI()
+    /**
+     * @param string $protocol
+     * @return mixed
+     */
+    public function openAPI($protocol = 'Soap')
     {
-        $_api_register = (new Clever_Adwords_Service_Api_Soap($this->_email))->generateCredentials();
+        $_class = "Clever_Adwords_Service_Api_{$protocol}";
+        $_api_register = (new $_class($this->_email))->generateCredentials();
         if ($_api_register['result']){
             $this->_credentials = $_api_register['credentials'];
         }

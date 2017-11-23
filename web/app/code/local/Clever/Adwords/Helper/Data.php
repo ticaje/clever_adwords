@@ -32,6 +32,17 @@ class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
     public function setInstalled()
     {
         Mage::getConfig()->saveConfig('adwords/general/installed', 1);
+        $this->clearCache();
+    }
+
+    public function setUninstalled()
+    {
+        Mage::getConfig()->saveConfig('adwords/general/installed', 0);
+        $this->clearCache();
+    }
+
+    protected function clearCache()
+    {
         Mage::app()->getCacheInstance()->cleanType(self::CACHE_CONFIG_TYPE);
         Mage::dispatchEvent('adminhtml_cache_refresh_type', array('type' => self::CACHE_CONFIG_TYPE));
     }

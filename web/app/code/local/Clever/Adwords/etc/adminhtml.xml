@@ -13,6 +13,13 @@
                     <title>Configurations</title>
                     <action>adminhtml/system_config/edit/section/adwords</action>
                 </config>
+                <uninstall module="clever_adwords">
+                    <title>Uninstall App</title>
+                    <action>adwords/adminhtml_settings/uninstall</action>
+                    <depends>
+                        <config>adwords/general/installed</config>
+                    </depends>
+                </uninstall>
             </children>
         </adwords>
     </menu>

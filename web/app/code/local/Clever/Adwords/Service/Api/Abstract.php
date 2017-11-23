@@ -15,8 +15,8 @@ abstract class Clever_Adwords_Service_Api_Abstract
     public function __construct()
     {
         $this->_helper = Mage::helper('oauth');
-        $this->_consumer_name = 'Clever Consumer'; //To load from config
-        $this->_role_name = 'Clever Role'; //To load from config
+        $this->_consumer_name = Clever_Adwords_Service_Settings::CLEVER_CONSUMER_CONSUMER_NAME;
+        $this->_role_name = Clever_Adwords_Service_Settings::CLEVER_CONSUMER_ROLE;
         $this->generateConsumerCredentials();
     }
 

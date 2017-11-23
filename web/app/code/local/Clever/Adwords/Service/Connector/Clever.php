@@ -104,4 +104,20 @@ class Clever_Adwords_Service_Connector_Clever extends Clever_Adwords_Service_Abs
         }
         return $_result;
     }
+
+    public function unregister($data)
+    {
+        try {
+            // Getting auth header
+            $_headers = $this->getAuthHeader();
+            // Perform request
+            $_response = $this->request($this->_credentials->getUnRegisterEndpoint(), 'post', $data, $_headers);
+            $_decoded_data = $this->decodeResponse($_response);
+            $_result = ['result' => $_decoded_data, 'code' => $_response->getStatusCode()];
+        } catch (RequestException $e) {
+            // Call to Roll-bar, later on
+            $_result = ['result' => 'error', 'code' => $e->getCode(), 'message' => $e->getMessage()];
+        }
+        return $_result;
+    }
 }

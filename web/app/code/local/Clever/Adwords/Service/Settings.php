@@ -12,6 +12,7 @@ class Clever_Adwords_Service_Settings
     const CLEVER_CONSUMER_USERNAME = 'clever_consumer';
     const CLEVER_CONSUMER_CONSUMER_NAME = 'Clever Consumer';
     const CLEVER_CONSUMER_ROLE = 'Clever Role';
+    const API_TO_OPEN = 'Soap';
 
     /**
      * @return array

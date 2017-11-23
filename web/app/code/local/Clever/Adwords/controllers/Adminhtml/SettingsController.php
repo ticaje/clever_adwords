@@ -58,7 +58,9 @@ class Clever_Adwords_Adminhtml_SettingsController extends Mage_Adminhtml_Control
     {
         $_messenger = Mage::getSingleton('adminhtml/session');
         $_uninstaller = new Clever_Adwords_Service_Install_Uninstaller();
-        if ($_uninstaller->closeApi('Soap')) {
+        if ($_uninstaller->closeApi(Clever_Adwords_Service_Settings::API_TO_OPEN)) {
+            $_connector = new Clever_Adwords_Service_Connector_Clever();
+            $_connector->unregister($_uninstaller->buildUnRegister());
             $this->_helper->setUninstalled();
             $_messenger->addSuccess($this->_helper->__('The Clever Adwords application has been uninstalled successfully'));
         } else {

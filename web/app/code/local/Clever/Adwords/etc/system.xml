@@ -11,14 +11,14 @@
             <label>Clever Adwords Settings</label>
             <tab>adwords</tab>
             <sort_order>30</sort_order>
-            <show_in_default>1</show_in_default>
+            <show_in_default>0</show_in_default>
             <show_in_website>0</show_in_website>
             <show_in_store>0</show_in_store>
             <groups>
                 <general translate="label">
                     <label>General settings</label>
                     <sort_order>10</sort_order>
-                    <show_in_default>1</show_in_default>
+                    <show_in_default>0</show_in_default>
                     <show_in_website>0</show_in_website>
                     <show_in_store>0</show_in_store>
                     <fields>
@@ -27,7 +27,7 @@
                             <sort_order>10</sort_order>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <show_in_default>1</show_in_default>
+                            <show_in_default>0</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </active>
@@ -37,7 +37,7 @@
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <frontend_model>clever_adwords/installed_renderer</frontend_model>
-                            <show_in_default>1</show_in_default>
+                            <show_in_default>0</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </installed>
@@ -46,7 +46,7 @@
                             <sort_order>20</sort_order>
                             <frontend_type>text</frontend_type>
                             <frontend_model>clever_adwords/installed_renderer</frontend_model>
-                            <show_in_default>1</show_in_default>
+                            <show_in_default>0</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </iframe_url>
@@ -55,7 +55,7 @@
                 <api translate="label">
                     <label>API Settings Credentials</label>
                     <sort_order>10</sort_order>
-                    <show_in_default>1</show_in_default>
+                    <show_in_default>0</show_in_default>
                     <show_in_website>0</show_in_website>
                     <show_in_store>0</show_in_store>
                     <fields>
@@ -64,7 +64,7 @@
                             <sort_order>10</sort_order>
                             <frontend_type>text</frontend_type>
                             <frontend_model>clever_adwords/installed_renderer</frontend_model>
-                            <show_in_default>1</show_in_default>
+                            <show_in_default>0</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </api_url>
@@ -73,7 +73,7 @@
                             <sort_order>20</sort_order>
                             <frontend_type>text</frontend_type>
                             <frontend_model>clever_adwords/installed_renderer</frontend_model>
-                            <show_in_default>1</show_in_default>
+                            <show_in_default>0</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </email>
@@ -82,7 +82,7 @@
                             <sort_order>30</sort_order>
                             <frontend_type>obscure</frontend_type>
                             <frontend_model>clever_adwords/installed_renderer</frontend_model>
-                            <show_in_default>1</show_in_default>
+                            <show_in_default>0</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </password>
@@ -91,7 +91,7 @@
                             <sort_order>40</sort_order>
                             <frontend_type>text</frontend_type>
                             <frontend_model>clever_adwords/installed_renderer</frontend_model>
-                            <show_in_default>1</show_in_default>
+                            <show_in_default>0</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </register_endpoint>

@@ -9,10 +9,6 @@
                     <title>Manage</title>
                     <action>adwords/adminhtml_settings</action>
                 </settings>
-                <config module="clever_adwords">
-                    <title>Configurations</title>
-                    <action>adminhtml/system_config/edit/section/adwords</action>
-                </config>
                 <uninstall module="clever_adwords">
                     <title>Uninstall App</title>
                     <action>adwords/adminhtml_settings/uninstall</action>

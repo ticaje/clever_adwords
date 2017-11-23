@@ -9,6 +9,9 @@
 class Clever_Adwords_Service_Settings
 {
     const SHA_256 = 'sha256';
+    const CLEVER_CONSUMER_USERNAME = 'clever_consumer';
+    const CLEVER_CONSUMER_CONSUMER_NAME = 'Clever Consumer';
+    const CLEVER_CONSUMER_ROLE = 'Clever Role';
 
     /**
      * @return array

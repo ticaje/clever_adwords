@@ -10,13 +10,13 @@
 use \Rollbar\Rollbar;
 use \Rollbar\Payload\Level;
 
-class Clever_Adwords_Service_Exception_Rollbar
+class Clever_Adwords_Service_Exception_Rollbar_Rollbar
 {
     static public function log($message, $level)
     {
         Rollbar::init(
             array(
-                'access_token' => 'sign up, start trial, get access token',
+                'access_token' => '2ebc59c9d3b641f3b5a57f8746b5ee69',
                 'environment' => 'production'
             )
         );

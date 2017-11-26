@@ -87,6 +87,7 @@ class Clever_Adwords_Service_Api_Soap extends Clever_Adwords_Service_Api_Abstrac
 
     public function generateCredentials()
     {
+        $_result = [];
         try {
             $this->createUser();
             $this->createRole(['name' => $this->_role_name]);

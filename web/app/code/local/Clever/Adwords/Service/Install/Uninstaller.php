@@ -16,18 +16,24 @@ class Clever_Adwords_Service_Install_Uninstaller extends Clever_Adwords_Service_
     {
         $_remove_api_credentials_method = "removeApi{$protocol}Credentials";
         $_remove_api_credentials = $this->$_remove_api_credentials_method();
-        $this->removeSettings();
+        if($_remove_api_credentials['result']){
+            $this->removeSettings();
+        }
         return $_remove_api_credentials;
     }
 
     protected function removeApiSoapCredentials()
     {
-        // By deleting the user i also remove those roles link to this user
-        $_user = Mage::getModel('api/user')->loadByUsername(Clever_Adwords_Service_Settings::CLEVER_CONSUMER_USERNAME);
-        if ($_user->delete()){
-            return true;
+        $_result = [];
+        try{
+            // By deleting the user i also remove those roles link to this user
+            $_user = Mage::getModel('api/user')->loadByUsername(Clever_Adwords_Service_Settings::CLEVER_CONSUMER_USERNAME);
+            $_user->delete();
+            $_result = ['result' => true, 'message' => 'Credentials removed successfully'];
+        } catch (Exception $exception) {
+            $_result = ['result' => false, 'message' => $exception->getMessage()];
         }
-        return false;
+        return $_result;
     }
 
     protected function removeSettings()

@@ -40,7 +40,10 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
     public function generateHmac()
     {
         $_encoded = Mage::helper('core')->jsonEncode($this->_payload);
-        $this->_hmac = hash_hmac(Clever_Adwords_Service_Settings::getHashMacAlgorithm(), $_encoded, Clever_Adwords_Service_Settings::getHashSecret());
+        $_encoded_payload = base64_encode($_encoded);
+        $_hash_mac = hash_hmac(Clever_Adwords_Service_Settings::getHashMacAlgorithm(), $_encoded, Clever_Adwords_Service_Settings::getHashSecret());
+        $_payload_signature = base64_encode($_hash_mac);
+        $this->_hmac = "{$_encoded_payload}.{$_payload_signature}";
         Mage::helper('clever_adwords')->setStoreHmac($this->_hmac, $this->_website_id);
     }
 

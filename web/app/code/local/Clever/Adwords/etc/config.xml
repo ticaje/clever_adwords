@@ -99,7 +99,7 @@
     <default>
         <adwords>
             <general>
-                <iframe_url>https://cleverppc.com/</iframe_url>
+                <iframe_url>https://magento.cleverecommerce.com/</iframe_url>
             </general>
             <api>
                 <api_url>https://magento.cleverecommerce.com/api/magento/</api_url>

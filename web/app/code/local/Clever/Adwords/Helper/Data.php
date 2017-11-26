@@ -52,6 +52,11 @@ class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
         Mage::getConfig()->saveConfig('adwords/store/store_hash', $hash);
     }
 
+    public function getStoreUniqueId()
+    {
+        return Mage::getStoreConfig('adwords/store/store_hash');
+    }
+
     public function setStoreHmac($hmac)
     {
         Mage::getConfig()->saveConfig('adwords/store/hmac', $hmac);

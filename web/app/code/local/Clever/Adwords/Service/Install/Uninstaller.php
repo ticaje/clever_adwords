@@ -37,4 +37,10 @@ class Clever_Adwords_Service_Install_Uninstaller extends Clever_Adwords_Service_
         // Unset store Hmac
         Mage::getConfig()->saveConfig('adwords/store/hmac', '');
     }
+
+    public function buildUnRegister()
+    {
+        $_data = ['client_id' => Mage::helper('clever_adwords')->getStoreUniqueId()];
+        return $_data;
+    }
 }

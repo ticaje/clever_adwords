@@ -81,19 +81,21 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
 
     }
 
+    /**
+     * @return array
+     *          * The builder result format responds to following sample pattern
+     * $data = [
+        'name' => , 'domain' => , 'email' => ,
+        'countries' => , 'language' => , 'currency' => , 'access_token' => ,
+        'client_id' => , 'secret' => , 'first_name' => , 'second_name' => ,
+        'shop_country' => , 'address' => , 'phone' => , 'timezone' =>
+     * ]
+     */
     public function buildRegister()
     {
         $_store_info = $this->fetchStoreInfo();
         $_extra_data = ['email' => $this->_email, 'client_id' => $this->_store->getStoreUniqueId()];
         $_data = array_merge($_store_info, $this->_credentials, $_extra_data);
         return $_data;
-        /*
-         * The builder result format responds to following sample pattern
-         * $data = [
-            'name' => , 'domain' => , 'email' => ,
-            'countries' => , 'language' => , 'currency' => , 'access_token' => ,
-            'client_id' => , 'secret' => , 'first_name' => , 'second_name' => ,
-            'shop_country' => , 'address' => , 'phone' => , 'timezone' =>
-        ];*/
     }
 }

@@ -34,21 +34,24 @@ class Clever_Adwords_Adminhtml_SettingsController extends Mage_Adminhtml_Control
                 //Send data to CleverPPC API ... still undone
                 $_connector = new Clever_Adwords_Service_Connector_Clever();
                 $_registered = $_connector->register($_installer->buildRegister());
-                if ($_registered['result']){
+                if ($_registered['result']) {
                     $this->_helper->setInstalled();
-                }else{
+                } else {
                     throw new Clever_Adwords_Service_Exception_Clever($_registered['message']);
                 }
-            }else{
+            } else {
                 throw new Clever_Adwords_Service_Exception_Api($_installed['message']);
             }
             $_messenger->addSuccess($this->_helper->__('The Clever Adwords application has been installed successfully'));
         } catch (Clever_Adwords_Service_Exception_Clever $e) {
             $_messenger->addError($this->_helper->__($e->getMessage()));
+            Clever_Adwords_Service_Exception_Rollbar_Rollbar::log($e->getMessage(), Clever_Adwords_Service_Exception_Rollbar_Level::ERROR);
         } catch (Clever_Adwords_Service_Exception_Api $e) {
             $_messenger->addError($this->_helper->__($e->getMessage()));
+            Clever_Adwords_Service_Exception_Rollbar_Rollbar::log($e->getMessage(), Clever_Adwords_Service_Exception_Rollbar_Level::ERROR);
         } catch (Exception $e) {
             $_messenger->addError($this->_helper->__($e->getMessage()));
+            Clever_Adwords_Service_Exception_Rollbar_Rollbar::log($e->getMessage(), Clever_Adwords_Service_Exception_Rollbar_Level::CRITICAL);
         }
         $this->_redirect('*/*/');
         return;
@@ -57,15 +60,25 @@ class Clever_Adwords_Adminhtml_SettingsController extends Mage_Adminhtml_Control
     public function uninstallAction()
     {
         $_messenger = Mage::getSingleton('adminhtml/session');
-        $_uninstaller = new Clever_Adwords_Service_Install_Uninstaller();
-        if ($_uninstaller->closeApi(Clever_Adwords_Service_Settings::API_TO_OPEN)) {
-            $_connector = new Clever_Adwords_Service_Connector_Clever();
-            $_connector->unregister($_uninstaller->buildUnRegister());
-            $this->_helper->setUninstalled();
-            $_messenger->addSuccess($this->_helper->__('The Clever Adwords application has been uninstalled successfully'));
-        } else {
-            $_messenger->addError($this->_helper->__('There was a problem uninstalling the App'));
+        try {
+            $_un_installer = new Clever_Adwords_Service_Install_Uninstaller();
+            $_uninstall = $_un_installer->closeApi(Clever_Adwords_Service_Settings::API_TO_OPEN);
+            if ($_uninstall['result']) {
+                $_connector = new Clever_Adwords_Service_Connector_Clever();
+                $_connector->unregister($_un_installer->buildUnRegister());
+                $this->_helper->setUninstalled();
+                $_messenger->addSuccess($this->_helper->__('The Clever Adwords application has been uninstalled successfully'));
+            } else {
+                throw new Clever_Adwords_Service_Exception_Clever($_uninstall['message']);
+            }
+        } catch (Clever_Adwords_Service_Exception_Clever $e) {
+            $_messenger->addError($this->_helper->__($e->getMessage()));
+            Clever_Adwords_Service_Exception_Rollbar_Rollbar::log($e->getMessage(), Clever_Adwords_Service_Exception_Rollbar_Level::ERROR);
+        } catch (Exception $e) {
+            $_messenger->addError($this->_helper->__($e->getMessage()));
+            Clever_Adwords_Service_Exception_Rollbar_Rollbar::log($e->getMessage(), Clever_Adwords_Service_Exception_Rollbar_Level::CRITICAL);
         }
+
         $this->_redirect('*/*/');
     }
 }

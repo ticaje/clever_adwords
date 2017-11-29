@@ -20,7 +20,7 @@ class Clever_Adwords_Service_Settings
      */
     static private function getEntities()
     {
-        return ['product', 'product_category', 'product_image', 'product_website', 'stock_item', 'order', 'order_item'];
+        return array('product', 'product_category', 'product_image', 'product_website', 'stock_item', 'order', 'order_item');
     }
 
     /**
@@ -36,13 +36,13 @@ class Clever_Adwords_Service_Settings
 
     static public function getSoapResources()
     {
-        return [
+        return array(
             'catalog','catalog/product','catalog/product/info','catalog/product/attribute','catalog/product/attribute/read',
             'catalog','catalog/category','catalog/category/tree','catalog/category/info',
             'cataloginventory','cataloginventory/info',
             'sales','sales/order','sales/order/info','sales/order/invoice','sales/order/invoice/info',
             'clever/adwords', 'clever/adwords/alive'
-        ];
+          );
     }
 
     /**
@@ -52,9 +52,9 @@ class Clever_Adwords_Service_Settings
      */
     static public function getPermissions($entities, $type)
     {
-        $_result = [];
+        $_result = array();
         foreach($entities as $entity) {
-            $_result[$entity] =  [$type => 1];
+            $_result[$entity] = array($type => 1);
         };
         return $_result;
     }

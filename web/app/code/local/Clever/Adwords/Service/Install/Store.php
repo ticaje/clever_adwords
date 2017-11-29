@@ -37,7 +37,7 @@ class Clever_Adwords_Service_Install_Store
      */
     public function getInformation()
     {
-        $_store = [
+        $_store = array(
             'name' => $this->getName(),
             'domain' => $this->getDomain(),
             'url' => $this->getUrl(),
@@ -47,7 +47,7 @@ class Clever_Adwords_Service_Install_Store
             'currency' => $this->getCurrency(),
             'language' => $this->getLanguages()
 
-        ];
+          );
         return $_store;
 
     }

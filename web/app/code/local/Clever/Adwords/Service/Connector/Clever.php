@@ -30,10 +30,10 @@ class Clever_Adwords_Service_Connector_Clever extends Clever_Adwords_Service_Abs
      * @param $headers
      * @return mixed
      */
-    protected function request($endPoint, $verb, $data, $headers = [])
+    protected function request($endPoint, $verb, $data, $headers = array())
     {
         $_url = $this->_credentials->getApiUrl() . "{$endPoint}";
-        $_response = $this->_client->$verb($_url, ['query' => $data, 'headers' => $headers]);
+        $_response = $this->_client->$verb($_url, array('query' => $data, 'headers' => $headers));
         return $_response;
     }
 
@@ -42,7 +42,7 @@ class Clever_Adwords_Service_Connector_Clever extends Clever_Adwords_Service_Abs
      */
     protected function getAuthData()
     {
-        return ['email' => $this->_credentials->getEmail(), 'password' => $this->_credentials->getPassword()];
+        return array('email' => $this->_credentials->getEmail(), 'password' => $this->_credentials->getPassword());
     }
 
     /**
@@ -50,7 +50,7 @@ class Clever_Adwords_Service_Connector_Clever extends Clever_Adwords_Service_Abs
      */
     protected function getAuthHeader()
     {
-        return ['authorization' => $this->_auth_token];
+        return array('authorization' => $this->_auth_token);
     }
 
     /**
@@ -77,10 +77,10 @@ class Clever_Adwords_Service_Connector_Clever extends Clever_Adwords_Service_Abs
             // Setting auth token
             $this->_auth_token = $_decoded_data->auth_token;
             // Setting result
-            $_result = ['result' => $this->_auth_token, 'code' => $_response->getStatusCode()];
+            $_result = array('result' => $this->_auth_token, 'code' => $_response->getStatusCode());
         } catch (RequestException $e) {
             // Call to Roll-bar, later on
-            $_result = ['result' => false, 'code' => $e->getCode(), 'message' => $e->getMessage()];
+            $_result = array('result' => false, 'code' => $e->getCode(), 'message' => $e->getMessage());
         }
         return $_result;
     }
@@ -97,10 +97,10 @@ class Clever_Adwords_Service_Connector_Clever extends Clever_Adwords_Service_Abs
             // Perform request
             $_response = $this->request($this->_credentials->getRegisterEndpoint(), 'post', $data, $_headers);
             $_decoded_data = $this->decodeResponse($_response);
-            $_result = ['result' => $_decoded_data, 'code' => $_response->getStatusCode()];
+            $_result = array('result' => $_decoded_data, 'code' => $_response->getStatusCode());
         } catch (RequestException $e) {
             // Call to Roll-bar, later on
-            $_result = ['result' => 'error', 'code' => $e->getCode(), 'message' => $e->getMessage()];
+            $_result = array('result' => 'error', 'code' => $e->getCode(), 'message' => $e->getMessage());
         }
         return $_result;
     }
@@ -113,10 +113,10 @@ class Clever_Adwords_Service_Connector_Clever extends Clever_Adwords_Service_Abs
             // Perform request
             $_response = $this->request($this->_credentials->getUnRegisterEndpoint(), 'post', $data, $_headers);
             $_decoded_data = $this->decodeResponse($_response);
-            $_result = ['result' => $_decoded_data, 'code' => $_response->getStatusCode()];
+            $_result = array('result' => $_decoded_data, 'code' => $_response->getStatusCode());
         } catch (RequestException $e) {
             // Call to Roll-bar, later on
-            $_result = ['result' => 'error', 'code' => $e->getCode(), 'message' => $e->getMessage()];
+            $_result = array('result' => 'error', 'code' => $e->getCode(), 'message' => $e->getMessage());
         }
         return $_result;
     }

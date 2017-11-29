@@ -9,7 +9,7 @@
 class Clever_Adwords_Model_Api extends Mage_Api_Model_Resource_Abstract
 {
     public function alive() {
-        $_result['response'] = ['code' => 200, 'status' => true];
+        $_result['response'] = array('code' => 200, 'status' => true);
         return $_result;
     }
 }

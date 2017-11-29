@@ -29,14 +29,14 @@ class Clever_Adwords_Service_Api_Soap extends Clever_Adwords_Service_Api_Abstrac
 
     protected function getUserData()
     {
-        $_user_data = [
+        $_user_data = array(
             'username' => $this->_username,
             'firstname' => $this->_consumer_name,
             'lastname' => $this->_consumer_name,
             'email' => $this->_email,
             'api_key' => $this->_api_key,
             'is_active' => 1
-        ];
+          );
         return $_user_data;
     }
 
@@ -81,20 +81,20 @@ class Clever_Adwords_Service_Api_Soap extends Clever_Adwords_Service_Api_Abstrac
 
     protected function getCredentials()
     {
-        $_result = ['access_token' => $this->_consumer_name, 'secret' => $this->_api_key];
+        $_result = array('access_token' => $this->_consumer_name, 'secret' => $this->_api_key);
         return $_result;
     }
 
     public function generateCredentials()
     {
-        $_result = [];
+        $_result = array();
         try {
             $this->createUser();
-            $this->createRole(['name' => $this->_role_name]);
+            $this->createRole(array('name' => $this->_role_name));
             $this->assignRoleToUser($this->_role);
-            $_result = ['result' => true, 'message' => 'Credentials created successfully', 'credentials' => $this->getCredentials()];
+            $_result = array('result' => true, 'message' => 'Credentials created successfully', 'credentials' => $this->getCredentials());
         } catch (Exception $exception) {
-            $_result = ['result' => false, 'message' => $exception->getMessage()];
+            $_result = array('result' => false, 'message' => $exception->getMessage());
         }
         return $_result;
     }

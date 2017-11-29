@@ -13,7 +13,7 @@ class Clever_Adwords_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getWebsitesList()
     {
-        $_result = [null => Mage::helper('clever_adwords')->__('Please Select')];
+        $_result = array(null => Mage::helper('clever_adwords')->__('Please Select'));
         $_websites = Mage::getResourceModel( 'core/website_collection' );
         foreach ($_websites as $index => $website){
             $_values['label'] = $website->getName();

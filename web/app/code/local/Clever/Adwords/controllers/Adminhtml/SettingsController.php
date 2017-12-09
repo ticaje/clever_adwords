@@ -81,4 +81,10 @@ class Clever_Adwords_Adminhtml_SettingsController extends Mage_Adminhtml_Control
 
         $this->_redirect('*/*/');
     }
+
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('adwords');
+    }
+
 }

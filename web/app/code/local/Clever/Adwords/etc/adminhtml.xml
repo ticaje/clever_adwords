@@ -5,11 +5,13 @@
             <title>Clever Adwords</title>
             <sort_order>90</sort_order>
             <children>
-                <settings module="clever_adwords">
+                <settings module="clever_adwords" translate="title">
+                    <sort_order>10</sort_order>
                     <title>Manage</title>
                     <action>adwords/adminhtml_settings</action>
                 </settings>
                 <uninstall module="clever_adwords">
+                    <sort_order>20</sort_order>
                     <title>Uninstall App</title>
                     <action>adwords/adminhtml_settings/uninstall</action>
                     <depends>
@@ -19,4 +21,21 @@
             </children>
         </adwords>
     </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <adwords module="clever_adwords">
+                        <children>
+                            <settings module="clever_adwords" translate="title">
+                                <sort_order>10</sort_order>
+                                <title>Manage Adwords</title>
+                            </settings>
+                        </children>
+                    </adwords>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
 </config>

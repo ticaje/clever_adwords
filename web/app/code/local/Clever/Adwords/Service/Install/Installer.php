@@ -31,7 +31,7 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
         $this->generatePayload();
         // Generate the hmac for communications with clever API
         $this->generateHmac();
-        $this->_credentials = [];
+        $this->_credentials = array();
     }
     /**
      * @return string
@@ -49,7 +49,7 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
 
     protected function generatePayload()
     {
-        $this->_payload = ['store_hash' => $this->_store->getStoreUniqueId(), 'timestamp' => time(), 'email' => $this->_email];
+        $this->_payload = array('store_hash' => $this->_store->getStoreUniqueId(), 'timestamp' => time(), 'email' => $this->_email);
     }
 
     /**
@@ -94,7 +94,7 @@ class Clever_Adwords_Service_Install_Installer extends Clever_Adwords_Service_Ab
     public function buildRegister()
     {
         $_store_info = $this->fetchStoreInfo();
-        $_extra_data = ['email' => $this->_email, 'client_id' => $this->_store->getStoreUniqueId()];
+        $_extra_data = array('email' => $this->_email, 'client_id' => $this->_store->getStoreUniqueId());
         $_data = array_merge($_store_info, $this->_credentials, $_extra_data);
         return $_data;
     }

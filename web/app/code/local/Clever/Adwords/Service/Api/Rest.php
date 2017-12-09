@@ -75,7 +75,7 @@ class Clever_Adwords_Service_Api_Rest extends Clever_Adwords_Service_Api_Abstrac
      */
     protected function getConsumerCredentials()
     {
-        $_result = ['key' => $this->_consumer_key, 'secret' => $this->_consumer_secret];
+        $_result = array('key' => $this->_consumer_key, 'secret' => $this->_consumer_secret);
         return $_result;
     }
 
@@ -84,7 +84,7 @@ class Clever_Adwords_Service_Api_Rest extends Clever_Adwords_Service_Api_Abstrac
      */
     protected function getCredentials()
     {
-        return ['access_token' => $this->_consumer_key, 'secret' => $this->_consumer_secret];
+        return array('access_token' => $this->_consumer_key, 'secret' => $this->_consumer_secret);
     }
 
     /**
@@ -92,15 +92,15 @@ class Clever_Adwords_Service_Api_Rest extends Clever_Adwords_Service_Api_Abstrac
      */
     public function generateCredentials()
     {
-        $_consumer_data = ['name' => $this->_consumer_name];
-        $_role_data = ['role_name' => $this->_role_name];
+        $_consumer_data = array('name' => $this->_consumer_name);
+        $_role_data = array('role_name' => $this->_role_name);
         try {
             $this->createOauthConsumer($_consumer_data);
             $this->createRole($_role_data);
-            $this->assignRoleToUser(['role' => $this->_api_role]);
-            $_result = ['result' => true, 'message' => 'Credentials created successfully', 'credentials' => $this->getCredentials()];
+            $this->assignRoleToUser(array('role' => $this->_api_role));
+            $_result = array('result' => true, 'message' => 'Credentials created successfully', 'credentials' => $this->getCredentials());
         } catch (Exception $exception) {
-            $_result = ['result' => false, 'message' => $exception->getMessage()];
+            $_result = array('result' => false, 'message' => $exception->getMessage());
         }
         return $_result;
     }
